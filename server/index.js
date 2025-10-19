@@ -3,12 +3,6 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Load .env from the root directory (one level up from server/)
-dotenv.config({ path: path.join(__dirname, "../.env") });
-
 // NOW import everything else AFTER environment variables are loaded
 import express from "express";
 import cors from "cors";
@@ -23,6 +17,17 @@ import { initializePassport } from "./config/passport.js";
 import { connectDB } from "./config/db.js";
 import { initializeSyncJob } from "./services/sync.service.js";
 import { startEmailMonitoring } from "./services/emailMonitoring.service.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env from the root directory (one level up from server/)
+
+// wait for .env to be loaded
+
+dotenv.config({ path: path.join(__dirname, "../.env") });
+
+console.log(process.env.DATABASE_URL);
 
 // Initialize Passport strategies
 initializePassport();

@@ -5,6 +5,8 @@ let sequelize = null;
 
 const getSequelize = () => {
   if (!sequelize) {
+    // Use the same connection params as postgres.js
+    // Build from individual env vars if DATABASE_URL not set
     const databaseUrl = process.env.DATABASE_URL;
 
     sequelize = new Sequelize(databaseUrl, {
