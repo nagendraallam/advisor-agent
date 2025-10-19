@@ -8,7 +8,9 @@
     "server": "nodemon server/index.js",
     "client": "cd client && npm run dev",
     "build": "cd client && npm run build",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build:serve": "npm run build && NODE_ENV=production npm start",
+    "serve": "NODE_ENV=production npm start"
   },
   "keywords": [],
   "author": "",
