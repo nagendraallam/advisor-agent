@@ -1,0 +1,231 @@
+.dashboard-page {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.dashboard-nav {
+  background-color: white;
+  border-bottom: 1px solid #dadce0;
+  padding: 1rem 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-main {
+  padding: 2rem;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #dadce0;
+}
+
+.connect-section {
+  padding: 2rem 0;
+}
+
+.connect-card {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.connect-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hubspot-logo {
+  margin-bottom: 1.5rem;
+}
+
+.connect-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #202124;
+}
+
+.connect-header p {
+  color: #5f6368;
+  font-size: 1.1rem;
+}
+
+.connect-benefits {
+  margin-bottom: 3rem;
+}
+
+.connect-benefits h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #202124;
+}
+
+.benefit-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.benefit-item:hover {
+  transform: translateX(5px);
+}
+
+.benefit-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.benefit-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: #202124;
+}
+
+.benefit-item p {
+  color: #5f6368;
+  font-size: 0.95rem;
+}
+
+.connect-actions {
+  text-align: center;
+}
+
+.connect-note {
+  margin-top: 1rem;
+  color: #5f6368;
+  font-size: 0.9rem;
+}
+
+.connected-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.success-card {
+  background: white;
+  border-radius: 16px;
+  padding: 4rem 3rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.success-card h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #202124;
+}
+
+.success-card p {
+  color: #5f6368;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Sync Status Section */
+.sync-status-section {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #dadce0;
+}
+
+.sync-status-section h3 {
+  margin-bottom: 1rem;
+  color: #202124;
+  font-size: 1.1rem;
+}
+
+.sync-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.status-item {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.status-icon {
+  font-size: 1.5rem;
+}
+
+.status-label {
+  font-weight: 600;
+  color: #202124;
+  font-size: 1rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+}
+
+.status-badge.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.error {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.status-badge.in_progress {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.status-time {
+  font-size: 0.85rem;
+  color: #5f6368;
+}
+
+
