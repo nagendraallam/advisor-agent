@@ -1,21 +1,43 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize(
-  process.env.POSTGRES_DB || "advisor_ai",
-  process.env.POSTGRES_USER || "postgres",
-  process.env.POSTGRES_PASSWORD || "",
+// Lazy initialization - create Sequelize instance when first needed
+let sequelize = null;
+
+const getSequelize = () => {
+  if (!sequelize) {
+    const databaseUrl = process.env.DATABASE_URL;
+
+    sequelize = new Sequelize(databaseUrl, {
+      dialect: "postgres",
+      logging: process.env.NODE_ENV === "development" ? console.log : false,
+      dialectOptions: {
+        ssl:
+          process.env.DB_SSL === "true"
+            ? {
+                require: true,
+                rejectUnauthorized: false,
+              }
+            : false,
+      },
+      pool: {
+        max: 20,
+        min: 0,
+        acquire: 30000,
+        idle: 10000,
+      },
+    });
+  }
+  return sequelize;
+};
+
+// Export a proxy that lazily initializes Sequelize
+export default new Proxy(
+  {},
   {
-    host: process.env.POSTGRES_HOST || "localhost",
-    port: process.env.POSTGRES_PORT || 5432,
-    dialect: "postgres",
-    logging: process.env.NODE_ENV === "development" ? console.log : false,
-    pool: {
-      max: 20,
-      min: 0,
-      acquire: 30000,
-      idle: 10000,
+    get: (target, prop) => {
+      const instance = getSequelize();
+      const value = instance[prop];
+      return typeof value === "function" ? value.bind(instance) : value;
     },
   }
 );
-
-export default sequelize;

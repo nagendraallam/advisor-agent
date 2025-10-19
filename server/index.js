@@ -1,10 +1,19 @@
-import express from "express";
-import cors from "cors";
+// Load environment variables FIRST, before any other imports
 import dotenv from "dotenv";
-import session from "express-session";
-import passport from "passport";
 import path from "path";
 import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env from the root directory (one level up from server/)
+dotenv.config({ path: path.join(__dirname, "../.env") });
+
+// NOW import everything else AFTER environment variables are loaded
+import express from "express";
+import cors from "cors";
+import session from "express-session";
+import passport from "passport";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
 import chatRoutes from "./routes/chat.js";
@@ -15,18 +24,11 @@ import { connectDB } from "./config/db.js";
 import { initializeSyncJob } from "./services/sync.service.js";
 import { startEmailMonitoring } from "./services/emailMonitoring.service.js";
 
-// Get the directory name
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Load .env from the root directory (one level up from server/)
-dotenv.config({ path: path.join(__dirname, "../.env") });
-
-// Initialize Passport strategies AFTER loading environment variables
+// Initialize Passport strategies
 initializePassport();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 // Connect to PostgreSQL
 connectDB();
