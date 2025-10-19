@@ -6,6 +6,7 @@ let pool = null;
 export const getPool = () => {
   if (!pool) {
     const databaseUrl = process.env.DATABASE_URL;
+    console.log(databaseUrl);
     if (databaseUrl) {
       pool = new Pool({
         connectionString: databaseUrl,
